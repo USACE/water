@@ -1,0 +1,2 @@
+# Do not auto-format minified files in /lib/**
+lib/**
