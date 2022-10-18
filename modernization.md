@@ -16,6 +16,40 @@ The original Access to Water website and API services focus primarily on sharing
 
 The following is a non-inclusive list of technical projects and capabilities to facilitate public data sharing and replacement of the original website and data services. Technical work for each component is managed using GitHub Issues at https://github.com/USACE/water.
 
+### A Simple, Flexible, Multi-Tenant Model for Data Aggregation
+
+```mermaid
+erDiagram
+    provider {
+        UUID    id        PK "NOT NULL"
+        VARCHAR slug         "NOT NULL"
+        VARCHAR name         "NOT NULL"
+        UUID    parent_id FK "optionally support parent/child relationship"
+    }
+    datasource_type {
+        UUID   id    PK "NOT NULL"
+        VARCHAR slug    "NOT NULL"
+        VARCHAR name    "NOT NULL"
+        VARCHAR uri     "NOT NULL"
+    }
+    datasource }o--|| provider : has
+    datasource }o--|| datasource_type : has
+    datasource {
+        UUID    id          PK "NOT NULL"
+        UUID    provider_id FK "NOT NULL"
+        VARCHAR type_id     FK "NOT NULL"
+    }
+    timeseries }o--|| datasource : ""
+    timeseries {
+        UUID        id             PK "NOT NULL"
+        UUID        datasource_id  FK "NOT NULL"
+        VARCHAR     datasource_key    "NOT NULL"
+        DOUBLE      latest_value
+        TIMESTAMPTZ latest_time
+    }
+
+```
+
 ### Web Application Programming Interface (API)
 
 A HTTP web service to support data integration and sharing. This is the primary web service that will power the new website to be hosted at https://water.usace.army.mil.
