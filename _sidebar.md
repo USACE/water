@@ -6,4 +6,7 @@
   - [Suggestions?](/suggestions.md)
 
 - Technical Details
-  - [Data Models](models/README.md)
+  - [Data Models](models/summary.md)
+    - [Provider/Datasource](models/provider.md)
+    - [Timeseries](models/timeseries.md)
+    - [Location](models/location.md)
