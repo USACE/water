@@ -31,6 +31,7 @@ erDiagram
     nws_site }o--|| location : ""
     nws_site {
         UUID        location_id        FK "UNIQUE NOT NULL"
+        VARCHAR     nws_li                "UNIQUE NOT NULL"
         VARCHAR     name                  "UNIQUE NOT NULL"
     }
     location }o--|| datasource : ""
