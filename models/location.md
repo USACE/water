@@ -3,7 +3,7 @@
 ```mermaid
 erDiagram
 
-    cwms_location }o--|| location : ""
+    cwms_location ||--|| location : ""
     cwms_location }o--|| cwms_location_kind : ""
     cwms_location {
         UUID        location_id    FK "UNIQUE NOT NULL"
@@ -15,7 +15,7 @@ erDiagram
         UUID        id        PK "UNIQUE NOT NULL"
         VARCHAR     name      "UNIQUE NOT NULL"
     }
-    usgs_site }o--|| location : ""
+    usgs_site ||--|| location : ""
     usgs_site }o--|| usgs_site_type : ""
     usgs_site {
         UUID        location_id        FK "UNIQUE NOT NULL"
@@ -28,7 +28,7 @@ erDiagram
         VARCHAR     abbreviation "UNIQUE NOT NULL"
         VARCHAR     name         "UNIQUE NOT NULL"
     }
-    nws_site }o--|| location : ""
+    nws_site ||--|| location : ""
     nws_site {
         UUID        location_id        FK "UNIQUE NOT NULL"
         VARCHAR     nws_li                "UNIQUE NOT NULL"
@@ -57,9 +57,9 @@ erDiagram
     datasource }o--|| provider : has
     datasource }o--|| datasource_type : has
     datasource {
-        UUID    id          PK "NOT NULL"
-        UUID    provider_id FK "NOT NULL"
-        VARCHAR type_id     FK "NOT NULL"
+        UUID id                  PK "NOT NULL"
+        UUID provider_id         FK "NOT NULL"
+        UUID datasource_type_id  FK "NOT NULL"
     }
 
 ```
