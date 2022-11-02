@@ -12,14 +12,14 @@ erDiagram
         VARCHAR name         "NOT NULL"
         UUID    parent_id FK "optionally support parent/child relationship"
     }
-    datasource_type {
+    datatype {
         UUID   id    PK "NOT NULL"
         VARCHAR slug    "NOT NULL"
         VARCHAR name    "NOT NULL"
         VARCHAR uri     "NOT NULL; (typically a top-level webservice url)"
     }
     datasource }o--|| provider : has
-    datasource }o--|| datasource_type : has
+    datasource }o--|| datatype : has
     datasource {
         UUID    id          PK "NOT NULL"
         UUID    provider_id FK "NOT NULL"
